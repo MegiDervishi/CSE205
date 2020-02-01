@@ -1,0 +1,22 @@
+0x000: 500f0001000000000000 |     mrmovq x, %rax
+0x00a: 503f0801000000000000 |     mrmovq y, %rbx
+0x014: 30f10500000000000000 |     irmovq $5, %rcx
+0x01e: 30f20100000000000000 |     irmovq $1, %rdx
+                            | 
+0x028: 6110                 |     subq %rcx, %rax
+0x02a: 500f0001000000000000 |     mrmovq x, %rax
+0x034: 764600000000000000   |     jg Ltrue
+0x03d: 704800000000000000   |     jmp Lfalse
+0x046:                      | Ltrue: 
+0x046: 6020                 |     addq %rdx , %rax
+0x048:                      | Lfalse:
+0x048: 400f0801000000000000 |     rmmovq %rax, y
+0x052: 00                   |     halt
+                            | 
+                            | #.pos 256
+                            | #x: .quad 0xffffffffffffffff
+                            | #y: .quad 0x00
+0x100:                      | .pos 256
+0x100: 0c00000000000000     | x: .quad 0x0c
+0x108: 0000000000000000     | y: .quad 0x00
+                            | 

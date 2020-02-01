@@ -1,0 +1,51 @@
+phase 1
+0x402460 = I can see Russia from my house!
+====================================================================
+phase 2
+0x400c10 <__isoc99_sscanf@plt>
+
+%eax:  1 2 4 8 16 32
+%ebx:  -> the numbers you inputed and are compared with those in eax  
+%esi 0x402781 = %d %d %d %d %d %d : format wanted
+====================================================================
+phase 3
+2 156
+
+%rsi 0x40278d = %d %d
+% rsp + 0xc = 2
+last number on eax = 156
+====================================================================
+phase 4
+5 15
+
+$0x40278d,%esi = %d %d
+first number between 2-14, sexond number = 15
+
+====================================================================
+phase 5
+650213 = (9+16+2+6+10+1)= 44
+
+string length needs to be 6
+do x/24 0x402500 to get the list of numbers each input represent 
+0 -> 2
+1 -> 10
+... etc
+====================================================================
+phase 6
+6 2 5 3 1 4
+
+the input needs to be between 1 and 6 and no repeating numbers 
+
+x/30 0x6052f0
+and re-arrange:
+
+0x6052f0 <node1>:	940=0x000003ac	0x00000001	0x00605300	0x00000000
+0x605300 <node2>:	534=0x00000216	0x00000002	0x00605310	0x00000000
+0x605310 <node3>:	727=0x000002d7	0x00000003	0x00605320	0x00000000
+0x605320 <node4>:	942=0x000003ae	0x00000004	0x00605330	0x00000000
+0x605330 <node5>:	709=0x000002c5	0x00000005	0x00605340	0x00000000
+0x605340 <node6>:	352=0x00000160	0x00000006	0x00000000	0x00000000
+
+====================================================================
+phase 7
+? how do i access it ???

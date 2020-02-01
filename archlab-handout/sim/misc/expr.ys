@@ -1,0 +1,22 @@
+    mrmovq x, %rax
+    mrmovq y, %rbx
+    irmovq $5, %rcx
+    irmovq $1, %rdx
+
+    subq %rcx, %rax
+    mrmovq x, %rax
+    jg Ltrue
+    jmp Lfalse
+Ltrue: 
+    addq %rdx , %rax
+Lfalse:
+    rmmovq %rax, y
+    halt
+
+#.pos 256
+#x: .quad 0xffffffffffffffff
+#y: .quad 0x00
+.pos 256
+x: .quad 0x0c
+y: .quad 0x00
+

@@ -1,0 +1,47 @@
+mrmovq result, %rax
+mrmovq len, %rbx
+irmovq src, %rcx
+irmovq dest, %rdx
+irmovq $8 , %rdi
+irmovq $1, %r9
+
+Lloop:
+#check len>0
+    irmovq   $0, %r8       
+    subq     %r8, %rbx  
+#if not true jump
+    je       Lend       
+#else actions inside the Lloop
+    mrmovq (%rcx) , %rsi
+    addq %rdi, %rcx
+    
+    rmmovq %rsi, (%rdx)
+    addq %rdi, %rdx
+
+    xorq %rsi, %rax
+
+    subq %r9, %rbx
+    jmp Lloop
+
+Lend:
+    halt
+
+.align 8
+# Source block
+src:
+        .quad 0x00a
+        .quad 0x0b0
+        .quad 0xc00
+
+# Destination block
+dest:
+        .quad 0x111
+        .quad 0x222
+        .quad 0x333
+
+# Length
+len:
+        .quad 0x3
+        
+result:
+        .quad 0
